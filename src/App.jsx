@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 import Form from './Component/Form';
+import Todo from './Component/Todo';
 const App = () =>{
 
   const [show, setShow] = useState(true);
@@ -27,7 +28,6 @@ const App = () =>{
 
 
   return (
-    <>
     <>
   {show && (
     <div
@@ -131,10 +131,8 @@ const App = () =>{
 
   {/* Form Component */}
   <Form />
+  <Todo/>
 </>
-
-    </>
-
   )
 }
 
