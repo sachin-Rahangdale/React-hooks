@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './App.css'
+import Form from './Component/Form';
 const App = () =>{
 
   const [show, setShow] = useState(true);
@@ -27,25 +28,111 @@ const App = () =>{
 
   return (
     <>
-    {show &&
-    <div style={{backgroundColor:'green', margin:'10px',marginRight:'70%', padding :'10px'}}>
-      <button onClick={()=>increaseCounter(5)} > click me ++ </button><p></p>
-    {/* when we dont have parameter we can only use name of function without () */}
-    <h1 style={{color : color}}>{counter}</h1>
-    
-    <button disabled={counter ==0 || counter - 10 <= 0 } onClick={()=>decreaseCounter(10)}> click me -- </button>
-    {/*this is how we pass parameter in function we use ()=> */}
+    <>
+  {show && (
+    <div
+      style={{
+        width: "300px",
+        margin: "30px auto",
+        padding: "20px",
+        borderRadius: "12px",
+        background: "linear-gradient(135deg, #34d399, #10b981)",
+        boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
+        textAlign: "center",
+        color: "#fff",
+      }}
+    >
+      <button
+        onClick={() => increaseCounter(5)}
+        style={{
+          padding: "10px",
+          width: "100%",
+          borderRadius: "8px",
+          border: "none",
+          cursor: "pointer",
+          fontWeight: "bold",
+          marginBottom: "10px",
+        }}
+      >
+        ➕ Increase
+      </button>
 
-    <button onClick={reset}> Reset to Zero </button>
+      <h1 style={{ color: color, margin: "15px 0" }}>{counter}</h1>
+
+      <button
+        disabled={counter === 0 || counter - 10 <= 0}
+        onClick={() => decreaseCounter(10)}
+        style={{
+          padding: "10px",
+          width: "100%",
+          borderRadius: "8px",
+          border: "none",
+          cursor: "pointer",
+          fontWeight: "bold",
+          marginBottom: "10px",
+          opacity: counter === 0 || counter - 10 <= 0 ? 0.5 : 1,
+        }}
+      >
+        ➖ Decrease
+      </button>
+
+      <button
+        onClick={reset}
+        style={{
+          padding: "10px",
+          width: "100%",
+          borderRadius: "8px",
+          border: "none",
+          cursor: "pointer",
+          fontWeight: "bold",
+          backgroundColor: "#ef4444",
+          color: "#fff",
+        }}
+      >
+        🔄 Reset
+      </button>
     </div>
-    
-}
+  )}
 
-    <button onClick={()=> setShow(!show)} 
-    type='button'
-     >{show ? 'Hide': 'Show'}</button>
-     <input type='text' onChange={onInputChange}/>
-  
+  {/* Toggle Button */}
+  <div style={{ textAlign: "center", marginBottom: "20px" }}>
+    <button
+      onClick={() => setShow(!show)}
+      type="button"
+      style={{
+        padding: "10px 20px",
+        borderRadius: "20px",
+        border: "none",
+        cursor: "pointer",
+        backgroundColor: "#6366f1",
+        color: "#fff",
+        fontWeight: "bold",
+      }}
+    >
+      {show ? "Hide Counter" : "Show Counter"}
+    </button>
+  </div>
+
+  {/* Color Input */}
+  <div style={{ textAlign: "center", marginBottom: "30px" }}>
+    <input
+      type="text"
+      placeholder="Enter a valid color (red, blue...)"
+      onChange={onInputChange}
+      style={{
+        padding: "10px",
+        width: "250px",
+        borderRadius: "8px",
+        border: "1px solid #ccc",
+        outline: "none",
+      }}
+    />
+  </div>
+
+  {/* Form Component */}
+  <Form />
+</>
+
     </>
 
   )
